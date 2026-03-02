@@ -21,7 +21,8 @@ pipeline {
                 bat 'java hello'
             }
         }
-        post{
+    }
+     post{
             success{
                 echo 'Pipeline build Seccessfully'
             }
@@ -29,5 +30,4 @@ pipeline {
                 echo 'Pipeline failed'
             }
         }
-    }
 }
