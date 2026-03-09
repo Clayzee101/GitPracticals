@@ -1,0 +1,24 @@
+pipeline{
+  agent any 
+  \
+  stages{
+    stage('Checkout'){
+      steps{
+        git 'https://github.com/Clayzee101/GitPracticals.git'
+      }
+      
+    }
+    stages('Publish'){
+      steps{
+        oublishHTML([
+          allowmissing:true,
+          alwaysLinktoLastBuild:false,
+          KeepAll:false,
+          reportDie:'.',
+          reportFiles:' 'doc.html',
+          reportName: 'My HTML PAGE'
+        ])
+      }
+    }
+  }
+}
