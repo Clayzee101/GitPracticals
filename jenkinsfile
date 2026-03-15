@@ -9,11 +9,11 @@ pipeline{
     }
     stage('Publish'){
       steps{
-        oublishHTML([
+        publishHTML([
           allowmissing:true,
           alwaysLinktoLastBuild:false,
           KeepAll:false,
-          reportDie:'.',
+          reportDie: '.',
           reportFiles:' 'doc.html',
           reportName: 'My HTML PAGE'
         ])
