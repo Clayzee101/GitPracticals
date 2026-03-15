@@ -1,23 +1,24 @@
-pipeline{
-  agent any 
-  stages{
-    stage('Checkout'){
-      steps{
-        git 'https://github.com/Clayzee101/GitPracticals.git'
-      }
-      
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Clayzee101/GitPracticals.git'
+            }
+        }
+
+        stage('Publish HTML') {
+            steps {
+                publishHTML(target: [
+                    allowMissing: true,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: '.',
+                    reportFiles: 'doc.html',
+                    reportName: 'My HTML Page'
+                ])
+            }
+        }
     }
-    stage('Publish'){
-      steps{
-        publishHTML([
-          allowmissing:true,
-          alwaysLinktoLastBuild:false,
-          KeepAll:false,
-          reportDie: '.',
-          reportFiles:' 'doc.html',
-          reportName: 'My HTML PAGE'
-        ])
-      }
-    }
-  }
 }
